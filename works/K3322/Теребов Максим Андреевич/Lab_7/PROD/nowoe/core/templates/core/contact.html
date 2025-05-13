@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Предзаказ{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Форма предзаказа</h2>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        {% if success %}
+        <div class="alert alert-success">
+            Спасибо за ваш предзаказ! Мы свяжемся с вами в ближайшее время.
+        </div>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark">Отправить</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
